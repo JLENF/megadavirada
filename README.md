@@ -103,3 +103,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 🔮 Observação Importante
 
 Este aplicativo é apenas para fins de entretenimento. Os números gerados são baseados em cálculos numerológicos e matemáticos, mas não garantem qualquer resultado em sorteios reais. Porém, se ganhar, seja feliz! 🎉
+
+---
+📦 [Código fonte disponível no GitHub](https://github.com/JLENF/megadavirada)

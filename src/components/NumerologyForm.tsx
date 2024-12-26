@@ -18,7 +18,6 @@ export function NumerologyForm({ onGenerate }: NumerologyFormProps) {
       onGenerate(numbers);
     } catch (error) {
       console.error('Error calculating numbers:', error);
-      // Fallback to basic numbers if calculation fails
       const fallbackNumbers = Array.from({ length: 6 }, (_, i) => i + 1);
       onGenerate(fallbackNumbers);
     } finally {
