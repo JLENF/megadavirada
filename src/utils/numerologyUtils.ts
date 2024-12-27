@@ -63,7 +63,11 @@ function reduceToSingleDigit(num: number): number {
 }
 
 // Generate lottery numbers based on numerological calculations
-export function generateNumerologyNumbers(name: string, birthDate: string): number[] {
+export function generateNumerologyNumbers(name: string, birthDate: string, quantity: number = 6): number[] {
+  if (quantity < 6 || quantity > 20) {
+    throw new Error('Quantidade de números deve ser entre 6 e 20');
+  }
+
   const destinyNumber = calculateDestinyNumber(birthDate);
   const expressionNumber = calculateExpressionNumber(name);
   const personalYear = calculatePersonalYear(birthDate);
@@ -77,7 +81,7 @@ export function generateNumerologyNumbers(name: string, birthDate: string): numb
   const dayEnergy = reduceToSingleDigit(today.getDate());
   const monthEnergy = reduceToSingleDigit(today.getMonth() + 1);
   
-  while (numbers.size < 6) {
+  while (numbers.size < quantity) {
     // Generate numbers based on numerological calculations
     baseNumbers.forEach(base => {
       const num1 = ((base * dayEnergy * monthEnergy) % 60) + 1;
@@ -88,7 +92,7 @@ export function generateNumerologyNumbers(name: string, birthDate: string): numb
     });
     
     // If we still need more numbers, use karmic numbers as seeds
-    if (numbers.size < 6) {
+    if (numbers.size < quantity) {
       KARMIC_NUMBERS.forEach(karmic => {
         const num = ((karmic * dayEnergy) % 60) + 1;
         if (num >= 1 && num <= 60) numbers.add(num);
@@ -96,14 +100,14 @@ export function generateNumerologyNumbers(name: string, birthDate: string): numb
     }
     
     // Fill remaining with life path number derivatives
-    if (numbers.size < 6) {
+    if (numbers.size < quantity) {
       const num = ((lifePath * dayEnergy * monthEnergy) % 60) + 1;
       if (num >= 1 && num <= 60) numbers.add(num);
     }
   }
   
-  // Convert to array and ensure we have exactly 6 numbers
-  let result = Array.from(numbers).slice(0, 6);
+  // Convert to array and ensure we have exactly the desired quantity of numbers
+  let result = Array.from(numbers).slice(0, quantity);
   
   // Sort numbers
   return result.sort((a, b) => a - b);
