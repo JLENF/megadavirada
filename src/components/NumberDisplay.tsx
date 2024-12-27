@@ -15,11 +15,11 @@ export function NumberDisplay({ numbers, quantity }: NumberDisplayProps) {
   };
   
   return (
-    <div className={`grid ${getGridClass()} gap-2 sm:gap-3 mb-6`}>
+    <div className={`grid ${getGridClass()} gap-3 sm:gap-4`}>
       {numbers.map((number, index) => (
         <div
           key={index}
-          className="aspect-square bg-green-100 rounded-full flex items-center justify-center p-1"
+          className="aspect-square bg-green-100 rounded-full flex items-center justify-center p-2 sm:p-3"
         >
           <span className="text-base sm:text-xl md:text-2xl font-bold text-green-700">
             {number}
@@ -32,7 +32,7 @@ export function NumberDisplay({ numbers, quantity }: NumberDisplayProps) {
           .map((_, index) => (
             <div
               key={index}
-              className="aspect-square bg-gray-100 rounded-full flex items-center justify-center p-1"
+              className="aspect-square bg-gray-100 rounded-full flex items-center justify-center p-2 sm:p-3"
             >
               <span className="text-base sm:text-xl md:text-2xl font-bold text-gray-300">
                 ?

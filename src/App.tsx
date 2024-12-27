@@ -13,14 +13,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-600 to-green-800 flex flex-col items-center px-2 py-4 sm:p-8">
       <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-4 sm:p-6 mb-16">
-        <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+        <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
           <Clover className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
             Mega Sena da Virada
           </h1>
         </div>
 
-        <div className="flex gap-1 sm:gap-2 mb-4 sm:mb-6">
+        <div className="flex gap-1 sm:gap-2 mb-6 sm:mb-8">
           <button
             onClick={() => setMode('random')}
             className={`flex-1 py-2 px-2 sm:px-4 rounded-lg text-sm sm:text-base font-medium transition-colors ${
@@ -43,20 +43,22 @@ function App() {
           </button>
         </div>
 
-        <NumberSelector quantity={quantity} onChange={setQuantity} />
-        <NumberDisplay numbers={numbers} quantity={quantity} />
+        <div className="space-y-6 sm:space-y-8">
+          <NumberSelector quantity={quantity} onChange={setQuantity} />
+          <NumberDisplay numbers={numbers} quantity={quantity} />
 
-        {mode === 'random' ? (
-          <button
-            onClick={() => setNumbers(generateRandomNumbers(quantity))}
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
-          >
-            <Clover className="w-4 h-4 sm:w-5 sm:h-5" />
-            Gerar Números Aleatórios
-          </button>
-        ) : (
-          <NumerologyForm onGenerate={setNumbers} quantity={quantity} />
-        )}
+          {mode === 'random' ? (
+            <button
+              onClick={() => setNumbers(generateRandomNumbers(quantity))}
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+            >
+              <Clover className="w-4 h-4 sm:w-5 sm:h-5" />
+              Gerar Números Aleatórios
+            </button>
+          ) : (
+            <NumerologyForm onGenerate={setNumbers} quantity={quantity} />
+          )}
+        </div>
       </div>
 
       <footer className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-sm py-2 sm:py-3 shadow-lg">
